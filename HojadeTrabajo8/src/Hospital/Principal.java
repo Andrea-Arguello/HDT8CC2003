@@ -10,6 +10,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Scanner;
+import java.util.Vector;
 
 /**
  *
@@ -25,26 +26,43 @@ public class Principal {
         BufferedReader br = new BufferedReader(new FileReader("pacientes.txt"));    
         StringBuilder sb = new StringBuilder();
         String line;
+        VectorHeap listaPacientes = null;
+        VectorHeapJFC pacientes = null;
+        Vector<Paciente> lista = new Vector<>();
 
         Scanner teclado = new Scanner(System.in);
 
         try {
             while ((line=br.readLine())!=null) {
-                String palabraIngles;
-                String palabraEspanol;
+                String nombre;
+                String prioridad;
+                String enfermedad;
+                
                 sb.append(line);
                 sb.append(System.lineSeparator()); 
-                line = line + " "; //Concatenado para que el ultimo valor sea leido sin problemas
-                                   //por substring
-                for(int i=1;i<line.length();i++){
-                    
-                    String iter = line.substring((i-1), i); 
-                    if(iter.equals(","))
-                    {
-                        palabraEspanol = line.substring(i, line.length()-1).toUpperCase(); //se obtiene la subcadena luego de ","
-                        palabraIngles = line.substring(0, i-1).toUpperCase(); //se obtiene la subcadena antes de "," 
-                    }
-                }
+                Paciente patient = null;
+                
+                int posNombre = line.indexOf(",");
+                nombre = line.substring(0, posNombre).toUpperCase();
+                String resto = line.substring(posNombre+1, line.length()).toUpperCase();
+                int posEnf = resto.indexOf(",");
+                enfermedad = resto.substring(0, posEnf).toUpperCase();
+                prioridad = resto.substring(posEnf+1, resto.length()).toUpperCase();
+                patient = new Paciente (nombre, prioridad, enfermedad);
+                lista.add(patient);
+            }
+            listaPacientes = new VectorHeap(lista);
+            pacientes = new VectorHeapJFC(lista);
+            int size = listaPacientes.size();
+            
+            for (int i =0; i<size; i++)
+            {
+                System.out.println(((Paciente)listaPacientes.remove()).toString());
+            }
+            System.out.println("\n------------------------- UTILIZANDO JAVA FRAMEWORK COLLECTION ---------------------");
+            for (int i =0; i<size; i++)
+            {
+                System.out.println(((Paciente)pacientes.poll()).toString());
             }
         }
         finally{

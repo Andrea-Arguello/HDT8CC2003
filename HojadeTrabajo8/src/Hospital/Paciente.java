@@ -5,11 +5,12 @@
  */
 package Hospital;
 
+
 /**
  *
  * @author cooli
  */
-public class Paciente {
+public class Paciente<E> implements Comparable<E> {
     private String nombre;
     private String codigo;
     private String sintoma;
@@ -33,7 +34,15 @@ public class Paciente {
     }
     
     public String toString(){
-        return "Nombre: " + nombre + "\nSintoma: " + sintoma + "\nCodigo: " + codigo;
+        return "Nombre: " + nombre + "\tSintoma: " + sintoma + "\tCodigo: " + codigo;
+    }
+    
+
+    @Override
+    public int compareTo(E otroPaciente) {
+        String codigo2 = ((Paciente)otroPaciente).getCodigo();
+        int compare = codigo.compareTo(codigo2);
+        return compare;
     }
     
 }

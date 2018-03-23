@@ -11,7 +11,7 @@ import java.util.*;
  *
  * @author anahernandez
  */
-public class VectorHeap<E extends Comparable<E>> extends PriorityQueue<E>
+public class VectorHeap<E extends Comparable<E>> implements PriorityQueue<E>
 {
 
 	protected Vector<E> data; // the data, kept in heap order
@@ -69,7 +69,7 @@ public class VectorHeap<E extends Comparable<E>> extends PriorityQueue<E>
 		data.set(leaf,value);
 	}
 
-	public void addHeap(E value)
+	public void add(E value)
 	// pre: value is non-null comparable
 	// post: value is added to priority queue
 	{
@@ -110,6 +110,10 @@ public class VectorHeap<E extends Comparable<E>> extends PriorityQueue<E>
 			}
 		}
 	}
+        public E getFirst()
+        {
+            return data.get(0);
+        }
 
 	public E remove()
 	// pre: !isEmpty()
@@ -121,4 +125,19 @@ public class VectorHeap<E extends Comparable<E>> extends PriorityQueue<E>
 		if (data.size() > 1) pushDownRoot(0);
 		return minVal;
 	}
+
+    @Override
+    public boolean isEmpty() {
+        return data.isEmpty();
+    }
+
+    @Override
+    public int size() {
+        return data.size();
+    }
+
+    @Override
+    public void clear() {
+        data.clear();
+    }
 }
