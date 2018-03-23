@@ -55,6 +55,7 @@ public class Principal {
             pacientes = new VectorHeapJFC(lista);
             int size = listaPacientes.size();
             
+            System.out.println("\n------------------ UTILIZANDO PROPIA IMPLEMENTACION DE VECTORHEAP---------------------");
             for (int i =0; i<size; i++)
             {
                 System.out.println(((Paciente)listaPacientes.remove()).toString());
