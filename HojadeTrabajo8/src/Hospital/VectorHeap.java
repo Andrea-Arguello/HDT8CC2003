@@ -1,7 +1,8 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * VectorHeap.java
+ * Vector Heap que implementa PrioirityQueue
+ * Ana Lucia Hernandez 17138
+ * Andrea Arguello 17801
  */
 package Hospital;
 
@@ -111,6 +112,7 @@ public class VectorHeap<E extends Comparable<E>> implements PriorityQueue<E>
 			}
 		}
 	}
+        
         public E getFirst()
         // pre: !isEmpty()
         // post: returns the minimum value in the priority queue
@@ -129,16 +131,27 @@ public class VectorHeap<E extends Comparable<E>> implements PriorityQueue<E>
 		return minVal;
 	}
 
+        /**
+         * 
+         * @return boolean de si está vacío o no
+         */
     @Override
     public boolean isEmpty() {
         return data.isEmpty();
     }
-
+    
+    /**
+     * 
+     * @return el tamaño del actual
+     */
     @Override
     public int size() {
         return data.size();
     }
 
+    /**
+     * Vacia el Vector
+     */
     @Override
     public void clear() {
         data.clear();
