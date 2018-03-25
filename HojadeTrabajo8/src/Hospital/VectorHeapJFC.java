@@ -10,6 +10,7 @@ import java.util.PriorityQueue;
 /**
  *
  * @author anahernandez
+ * @param <E> Object
  */
 public class VectorHeapJFC<E extends Comparable<E>> extends PriorityQueue<E> {
 
@@ -21,18 +22,21 @@ public class VectorHeapJFC<E extends Comparable<E>> extends PriorityQueue<E> {
     /**
      * Construct a new priority queue
      *
-     * @post constructs a new priority queue
      */
-    public VectorHeapJFC() {
+    public VectorHeapJFC()
+    //post:constructs a new priority queue
+    {
         data = new Vector<E>();
     }
 
     /**
      * Construct a new priority queue from an unordered vector
      *
-     * @post constructs a new priority queue from an unordered vector
+     * @param v vector of objects
      */
-    public VectorHeapJFC(Vector<E> v) {
+    public VectorHeapJFC(Vector<E> v)
+    //post:constructs a new priority queue from an unordered vector
+    {
         int i;
         data = new Vector<E>(v.size()); // we know ultimate size
         for (i = 0; i < v.size(); i++) {   // add elements to heap
@@ -45,10 +49,11 @@ public class VectorHeapJFC<E extends Comparable<E>> extends PriorityQueue<E> {
      *
      * @param i a node index
      * @return parent of node at i
-     * @pre 0 <= i < size
-     * @post returns parent of node at location i
      */
-    protected static int parent(int i) {
+    protected static int parent(int i)
+    //pre: 0 <= i < size
+    //post: returns parent of node at location i
+    {
         return (i - 1) / 2;
     }
 
@@ -57,10 +62,11 @@ public class VectorHeapJFC<E extends Comparable<E>> extends PriorityQueue<E> {
      *
      * @param i a node index
      * @return left child of node at i
-     * @pre 0 <= i < size
-     * @post returns index of left child of node at location i
      */
-    protected static int left(int i) {
+    protected static int left(int i)
+    //pre:0 <= i < size
+    //post:returns index of left child of node at location i
+    {
         return 2 * i + 1;
     }
 
@@ -69,34 +75,37 @@ public class VectorHeapJFC<E extends Comparable<E>> extends PriorityQueue<E> {
      *
      * @param i a node index
      * @return right child of node at i
-     * @pre 0 <= i < size
-     * @post returns index of right child of node at location i
      */
-    protected static int right(int i) {
+    protected static int right(int i)
+    //pre:0 <= i < size
+    //post:returns index of right child of node at location i
+    {
         return 2 * (i + 1);
     }
 
     /**
      * Fetch lowest valued (highest priority) item from queue.
      *
-     * @pre !isEmpty()
-     * @post returns the minimum value in priority queue
      *
      * @return The smallest value from queue.
      */
-    public E getFirst() {
+    public E getFirst()
+    //pre:!isEmpty()
+    //post:returns minimum value from queue
+    {
         return data.get(0);
     }
 
     /**
      * Returns the minimum value from the queue.
      *
-     * @pre !isEmpty()
-     * @post returns and removes minimum value from queue
      *
      * @return The minimum value in the queue.
      */
-    public E remove() {
+    public E remove()
+    //pre:!isEmpty()
+    //post:returns and removes minimum value from queue
+    {
         E minVal = getFirst();
         data.set(0, data.get(data.size() - 1));
         data.setSize(data.size() - 1);
@@ -109,11 +118,11 @@ public class VectorHeapJFC<E extends Comparable<E>> extends PriorityQueue<E> {
     /**
      * Determine if the queue is empty.
      *
-     * @post returns true iff no elements are in queue
-     *
      * @return True if the queue is empty.
      */
-    public boolean isEmpty() {
+    public boolean isEmpty()
+    //post:returns true iff no elements are in queue
+    {
         return data.size() == 0;
     }
 
@@ -121,10 +130,11 @@ public class VectorHeapJFC<E extends Comparable<E>> extends PriorityQueue<E> {
      * Moves node upward to appropriate position within heap.
      *
      * @param leaf Index of the node in the heap.
-     * @pre 0 <= leaf < size
-     * @post moves node at index leaf up to appropriate position
      */
-    protected void percolateUp(int leaf) {
+    protected void percolateUp(int leaf)
+    //pre:0 <= leaf < size
+    //post:moves node at index leaf up to appropriate position
+    {
         int parent = parent(leaf);
         E value = data.get(leaf);
         while (leaf > 0
@@ -140,10 +150,11 @@ public class VectorHeapJFC<E extends Comparable<E>> extends PriorityQueue<E> {
      * Moves node downward, into appropriate position within subheap.
      *
      * @param root Index of the root of the subheap.
-     * @pre 0 <= root < size
-     * @post moves node at index root down to appropriate position in subtree
      */
-    protected void pushDownRoot(int root) {
+    protected void pushDownRoot(int root)
+    //pre:0 <= root < size
+    //post:moves node at index root down to appropriate position in subtree
+    {
         int heapSize = data.size();
         E value = data.get(root);
         while (root < heapSize) {
@@ -171,31 +182,32 @@ public class VectorHeapJFC<E extends Comparable<E>> extends PriorityQueue<E> {
     /**
      * Determine the size of the queue.
      *
-     * @post returns number of elements within queue
-     *
      * @return The number of elements within the queue.
      */
-    public int size() {
+    public int size()
+    //post: returns number of elements within queue
+    {
         return data.size();
     }
 
     /**
      * Remove all the elements from the queue.
-     *
-     * @post removes all elements from queue
      */
-    public void clear() {
+    public void clear()
+    //post: removes all elements from queue
+    {
         data.clear();
     }
 
     /**
      * Construct a string representation of the heap.
      *
-     * @post returns string representation of heap
      *
      * @return The string representing the heap.
      */
-    public String toString() {
+    public String toString()
+    //post returns string representation of heap
+    {
         return "<VectorHeap: " + data + ">";
     }
 }

@@ -10,6 +10,7 @@ import java.util.*;
 /**
  *
  * @author anahernandez
+ * @param <E> Object
  */
 public class VectorHeap<E extends Comparable<E>> implements PriorityQueue<E>
 {
@@ -111,6 +112,8 @@ public class VectorHeap<E extends Comparable<E>> implements PriorityQueue<E>
 		}
 	}
         public E getFirst()
+        // pre: !isEmpty()
+        // post: returns the minimum value in the priority queue
         {
             return data.get(0);
         }

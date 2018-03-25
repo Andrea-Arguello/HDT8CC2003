@@ -20,6 +20,7 @@ public class Principal {
 
     /**
      * @param args the command line arguments
+     * @throws java.io.FileNotFoundException if file is not found
      */
     public static void main(String[] args) throws FileNotFoundException, IOException {
         // TODO code application logic here
@@ -31,9 +32,10 @@ public class Principal {
         Vector<Paciente> lista = new Vector<>();
 
         Scanner teclado = new Scanner(System.in);
-
+        System.out.println("TEXTO ORIGINAL:");
         try {
             while ((line=br.readLine())!=null) {
+                System.out.println(line);
                 String nombre;
                 String prioridad;
                 String enfermedad;
