@@ -1,7 +1,8 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * VectorHeapNGTest.java
+ * JUnitTest de la clase VectorHeap
+ * Ana Lucia Hernandez 17138
+ * Andrea Arguello 17801
  */
 package Hospital;
 
@@ -62,13 +63,21 @@ public class VectorHeapNGTest {
 
     /**
      * Test of getFirst method, of class VectorHeap.
+     * Devuelve el primer elemento de la lista
      */
     @Test
     public void testGetFirst() {
+        Vector<String> lista = new Vector<>();
+        lista.add("3");
+        lista.add("2");
+        VectorHeap heap = new VectorHeap(lista);
+        //A pesar de haber sido añadido de segundo, 2 debería ser el primer elemento por comparación
+        assertEquals(heap.getFirst(),"2");
     }
 
     /**
      * Test of remove method, of class VectorHeap.
+     * Elimina el primer elemento de la lista
      */
     @Test
     public void testRemove() {
@@ -77,11 +86,13 @@ public class VectorHeapNGTest {
         lista.add("2");
         VectorHeap heap = new VectorHeap(lista);
         heap.remove();
-        assertEquals(heap.size(),1);
+        //El resultado debería ser dos, ya que se elimino el elemento de principal prioridad
+        assertEquals(heap.getFirst(),"2");
     }
 
     /**
      * Test of isEmpty method, of class VectorHeap.
+     * El metodo devuelve true si esta vacio, falso si no
      */
     @Test
     public void testIsEmpty() {
@@ -89,12 +100,13 @@ public class VectorHeapNGTest {
         lista.add("1");
         lista.add("2");
         VectorHeap heap = new VectorHeap(lista);
-        
+        //El resultado debería ser falso, ya que se estan ingresando valores al heap
         assertEquals(heap.isEmpty(),false);
     }
 
     /**
      * Test of size method, of class VectorHeap.
+     * Devuelve la cantidad de elementos en el heap
      */
     @Test
     public void testSize() {
@@ -107,10 +119,16 @@ public class VectorHeapNGTest {
 
     /**
      * Test of clear method, of class VectorHeap.
+     * Vacia el heap.
      */
     @Test
     public void testClear() {
-        
+        Vector<String> lista = new Vector<>();
+        lista.add("1");
+        lista.add("2");
+        VectorHeap heap = new VectorHeap(lista);
+        heap.clear();
+        assertEquals(heap.size(),0);
     }
     
 }
