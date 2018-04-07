@@ -9,7 +9,8 @@ import java.util.Vector;
 import java.util.PriorityQueue;
 /**
  *
- * @author anahernandez
+ * @author Ana Lucia Hernandez (17138).
+ * @author Andrea Arguello (17801).
  * @param <E> Object
  */
 public class VectorHeapJFC<E extends Comparable<E>> extends PriorityQueue<E> {
