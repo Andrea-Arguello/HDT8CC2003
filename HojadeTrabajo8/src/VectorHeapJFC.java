@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Hospital;
 
 import java.util.Vector;
 import java.util.PriorityQueue;

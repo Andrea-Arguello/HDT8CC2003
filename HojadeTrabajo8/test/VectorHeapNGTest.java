@@ -4,7 +4,6 @@
  * Ana Lucia Hernandez 17138
  * Andrea Arguello 17801
  */
-package Hospital;
 
 import java.util.Vector;
 import static org.testng.Assert.*;
